@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FPP Media Strategy</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      margin: 2rem;
+      background-color: #f9fafb;
+    }
+    h1, h2 {
+      color: #1e293b;
+    }
+    canvas {
+      max-width: 500px;
+      margin-bottom: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Fair Price Pharma – Media & Digital Strategy</h1>
+
+  <h2>Platform Focus</h2>
+  <canvas id="platformChart"></canvas>
+
+  <h2>Content Type Distribution</h2>
+  <canvas id="contentChart"></canvas>
+
+  <script>
+    const platformCtx = document.getElementById('platformChart');
+    new Chart(platformCtx, {
+      type: 'pie',
+      data: {
+        labels: ['Twitter/X', 'LinkedIn', 'Facebook'],
+        datasets: [{
+          label: 'Platform Focus',
+          data: [45, 35, 20],
+          backgroundColor: ['#3b82f6', '#6366f1', '#10b981']
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { position: 'bottom' } }
+      }
+    });
+
+    const contentCtx = document.getElementById('contentChart');
+    new Chart(contentCtx, {
+      type: 'doughnut',
+      data: {
+        labels: ['Education', 'Engagement', 'Campaigns'],
+        datasets: [{
+          label: 'Content Distribution',
+          data: [40, 35, 25],
+          backgroundColor: ['#f59e0b', '#ef4444', '#8b5cf6']
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { position: 'bottom' } }
+      }
+    });
+  </script>
+
+  <p><strong>Note:</strong> This strategy is supported by a structured stakeholder engagement approach and monitored through sentiment analytics and SEO performance metrics.</p>
+</body>
+</html>
