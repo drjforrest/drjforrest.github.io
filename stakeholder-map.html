@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fair Price Pharma - Stakeholder Engagement Proposal</title>
+  <link href="styles/tailwind.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      color: #334155;
+      line-height: 1.6;
+      background-color: #f8fafc;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+    }
+    
+    .header {
+      background-color: white;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: #2563eb;
+    }
+    
+    .navigation {
+      display: flex;
+      gap: 2rem;
+    }
+    
+    .nav-link {
+      color: #64748b;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      padding: 0.5rem 0;
+      border-bottom: 2px solid transparent;
+    }
+    
+    .nav-link:hover, .nav-link.active {
+      color: #2563eb;
+      border-bottom: 2px solid #2563eb;
+    }
+    
+    .hero {
+      padding: 4rem 0;
+      background-color: #2563eb;
+      color: white;
+      text-align: center;
+    }
+    
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+    
+    .hero p {
+      font-size: 1.25rem;
+      max-width: 800px;
+      margin: 0 auto 2rem;
+    }
+    
+    .cta-button {
+      display: inline-block;
+      background-color: white;
+      color: #2563eb;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.25rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+    .section {
+      padding: 4rem 0;
+    }
+    
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #1e293b;
+      font-weight: 700;
+    }
+    
+    .section-subtitle {
+      font-size: 1.1rem;
+      color: #64748b;
+      margin-bottom: 2rem;
+    }
+    
+    .card {
+      background-color: white;
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      padding: 2rem;
+      height: 100%;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+    
+    .card-title {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #1e293b;
+      font-weight: 600;
+    }
+    
+    .card-icon {
+      font-size: 2rem;
+      color: #2563eb;
+      margin-bottom: 1rem;
+    }
+    
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    
+    .footer {
+      background-color: #1e293b;
+      color: #94a3b8;
+      padding: 2rem 0;
+      text-align: center;
+    }
+    
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      color: #2563eb;
+      text-decoration: none;
+      margin-bottom: 2rem;
+      font-weight: 500;
+    }
+    
+    .back-link svg {
+      margin-right: 0.5rem;
+    }
+    
+    .back-link:hover {
+      text-decoration: underline;
+    }
+    
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .timeline::after {
+      content: '';
+      position: absolute;
+      width: 6px;
+      background-color: #e2e8f0;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -3px;
+      border-radius: 3px;
+    }
+    
+    .timeline-item {
+      padding: 10px 40px;
+      position: relative;
+      width: 50%;
+      box-sizing: border-box;
+    }
+    
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: white;
+      border: 4px solid #2563eb;
+      border-radius: 50%;
+      top: 15px;
+      z-index: 1;
+    }
+    
+    .left {
+      left: 0;
+    }
+    
+    .right {
+      left: 50%;
+    }
+    
+    .left::after {
+      right: -10px;
+    }
+    
+    .right::after {
+      left: -10px;
+    }
+    
+    .timeline-content {
+      padding: 20px;
+      background-color: white;
+      border-radius: 6px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+    .timeline-content h3 {
+      margin-top: 0;
+      color: #2563eb;
+    }
+    
+    @media screen and (max-width: 768px) {
+      .timeline::after {
+        left: 31px;
+      }
+      
+      .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+      }
+      
+      .timeline-item::after {
+        left: 21px;
+      }
+      
+      .left::after, .right::after {
+        left: 21px;
+      }
+      
+      .right {
+        left: 0;
+      }
+      
+      .nav-container {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem 0;
+      }
+      
+      .navigation {
+        width: 100%;
+        justify-content: space-between;
+        overflow-x: auto;
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header & Navigation -->
+  <header class="header">
+    <div class="container nav-container">
+      <div class="logo">Fair Price Pharma Proposal</div>
+      <nav class="navigation">
+        <a href="index.html" class="nav-link">Executive Summary</a>
+        <a href="context.html" class="nav-link">Background</a>
+        <a href="stakeholder-map.html" class="nav-link active">Stakeholder Map</a>
+        <a href="stakeholders.html" class="nav-link">Stakeholder Matrix</a>
+        <a href="strategy.html" class="nav-link">Recommendations</a>
+        <a href="media-strategy.html" class="nav-link">Media Strategy</a>
+        <a href="implementation.html" class="nav-link">Implementation</a>
+      </nav>
+    </div>
+  </header>
+  
+  <!-- Back to homepage link -->
+  <div class="container" style="padding-top: 2rem;">
+    <a href="/" class="back-link">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+      Back to Dr. Jamie Forrest's Homepage
+    </a>
+  </div>
+  
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1 class="page-title">Stakeholder Mapping</h1>
+      <p class="page-subtitle">A comprehensive visualization of Fair Price Pharma's stakeholder ecosystem</p>
+    </div>
+  </section>
+  
+  <!-- Main Content Area -->
+  <section class="section">
+    <div class="container">
+      <div class="content-section">
+        <h3>Interactive Stakeholder Map</h3>
+        <p>This interactive stakeholder map provides a comprehensive overview of all key stakeholders in Fair Price Pharma's ecosystem. The map is organized into primary categories with expandable sub-groups. Click on any node to expand or collapse it for more detailed information.</p>
+        <p><strong>Instructions:</strong> Use the mouse wheel to zoom in/out, click and drag to pan, and click on any node to expand or collapse its children.</p>
+        
+        <!-- The Interactive Markmap -->
+        <div class="markmap-wrapper">
+          <pre class="markmap" style="display: none;">
+# Fair Price Pharma Stakeholder Mapping
+## Internal Stakeholders
+- Board / Executive / Investors
+  - MS & PK
+  - Other Founders
+- Staff
+  - Pharmacists
+  - Chemists
+  - Operations
+
+## External Stakeholders
+- Patients
+  - Those accessing FPP Rx
+  - Community of PWUD at-large
+- Community Organizations
+  - Ancillary Care Providers
+  - Advocacy Networks
+  - Hope to Health
+- Research & Clinical Practice
+  - Academic Practice Hybrids (BC-CfE, BC-CSU, CHEOS)
+  - Institutional Academic (UBC, SFU, Pharmacology)
+- Regulatory Authorities
+  - Health Canada
+  - BC Ministry of Health
+  - College of Pharmacists of BC
+  - Local Health Authorities (VCH, PHC, FHA, NHA, IH)
+- Prescribers
+  - Nurse Practitioners
+  - Family Doctors
+  - Addiction Medicine Specialists
+- Law Enforcement & Municipal Authorities
+  - Vancouver Police Department
+  - City of Vancouver
+  - Federal Ministry of Public Safety
+- Media & Advocacy Groups
+- General Public & Local Residents
+  - Strathcona Neighbourhood Association
+          </pre>
+        </div>
+      </div>
+      
+      <div class="content-section">
+        <h3>Stakeholder Map Analysis</h3>
+        <p>The stakeholder map reveals the complex ecosystem surrounding Fair Price Pharma's operations. Understanding these relationships is crucial for developing effective engagement strategies:</p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+          <div style="background-color: #f8fafc; border-radius: 0.5rem; padding: 1.5rem; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);">
+            <h4 style="color: #1e293b; font-weight: 600; margin-top: 0;">Internal Stakeholders</h4>
+            <p>The core team responsible for Fair Price Pharma's operations, including leadership, clinical staff, and operational support. These stakeholders require clear internal communication channels and alignment around strategic objectives.</p>
+          </div>
+          <div style="background-color: #f8fafc; border-radius: 0.5rem; padding: 1.5rem; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);">
+            <h4 style="color: #1e293b; font-weight: 600; margin-top: 0;">Healthcare Ecosystem</h4>
+            <p>Includes prescribers, patients, and healthcare organizations. These stakeholders are essential for program implementation and require tailored engagement approaches focused on clinical benefits and patient outcomes.</p>
+          </div>
+          <div style="background-color: #f8fafc; border-radius: 0.5rem; padding: 1.5rem; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);">
+            <h4 style="color: #1e293b; font-weight: 600; margin-top: 0;">Regulatory & Governmental</h4>
+            <p>Regulatory bodies and government entities that oversee pharmaceutical operations. Engagement with these stakeholders must focus on compliance, transparency, and alignment with public health objectives.</p>
+          </div>
+          <div style="background-color: #f8fafc; border-radius: 0.5rem; padding: 1.5rem; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);">
+            <h4 style="color: #1e293b; font-weight: 600; margin-top: 0;">Community & Public</h4>
+            <p>Local communities, advocacy groups, and the general public whose support is crucial for program acceptance and sustainability. Communication should emphasize community benefits and address potential concerns.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="content-section">
+        <h3>Key Stakeholder Relationships</h3>
+        <p>The stakeholder map highlights important interconnections that should inform engagement strategies:</p>
+        
+        <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+          <li><strong>Patients ↔ Prescribers:</strong> This critical relationship determines medication access and requires coordinated engagement efforts.</li>
+          <li><strong>Regulatory Authorities ↔ Operations:</strong> Compliance requirements significantly impact operational procedures and need proactive management.</li>
+          <li><strong>Community Organizations ↔ General Public:</strong> Community organizations can serve as intermediaries and advocates with the broader public.</li>
+          <li><strong>Research & Clinical Practice ↔ Regulatory Authorities:</strong> Evidence generation can influence regulatory frameworks and policy decisions.</li>
+        </ul>
+        
+        <p>Understanding these interrelationships allows for more strategic engagement planning that leverages existing networks and addresses potential barriers or resistance points.</p>
+      </div>
+      
+      <div class="next-section">
+        <a href="stakeholders.html" class="next-link">
+          Continue to Stakeholder Matrix
+          <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>© 2025 Dr. Jamie Forrest | Prepared for Fair Price Pharma</p>
+    </div>
+  </footer>
+  
+  <script>
+    // Ensure the markmap renders after the page loads
+    window.addEventListener('load', function() {
+      // Give the markmap library a moment to initialize
+      setTimeout(function() {
+        // Make sure markmap container is visible and has height
+        const container = document.querySelector('.markmap-wrapper');
+        if (container) {
+          container.style.height = '600px';
+          container.style.minHeight = '600px';
+          container.style.width = '100%';
+          container.style.border = '1px solid #e2e8f0';
+          container.style.borderRadius = '0.5rem';
+          container.style.overflow = 'hidden';
+        }
+      }, 100);
+    });
+  </script>
+</body>
+</html>

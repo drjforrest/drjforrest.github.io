@@ -3,68 +3,470 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="/styles/tailwind.css" rel="stylesheet">
-  <title>Fair Price Pharma Stakeholder Map</title>
-  <script src="https://cdn.jsdelivr.net/npm/markmap-autoloader"></script>
+  <title>Fair Price Pharma - Stakeholder Engagement Proposal</title>
+  <link href="styles/tailwind.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <style>
-    html, body {
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      color: #334155;
+      line-height: 1.6;
+      background-color: #f8fafc;
       margin: 0;
-      height: 100%;
-      background: #f9f9f9;
-      font-family: system-ui, sans-serif;
+      padding: 0;
     }
-    #app {
-      height: 100vh;
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+    }
+    
+    .header {
+      background-color: white;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: #2563eb;
+    }
+    
+    .navigation {
+      display: flex;
+      gap: 2rem;
+    }
+    
+    .nav-link {
+      color: #64748b;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      padding: 0.5rem 0;
+      border-bottom: 2px solid transparent;
+    }
+    
+    .nav-link:hover, .nav-link.active {
+      color: #2563eb;
+      border-bottom: 2px solid #2563eb;
+    }
+    
+    .hero {
+      padding: 4rem 0;
+      background-color: #2563eb;
+      color: white;
+      text-align: center;
+    }
+    
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+    
+    .hero p {
+      font-size: 1.25rem;
+      max-width: 800px;
+      margin: 0 auto 2rem;
+    }
+    
+    .cta-button {
+      display: inline-block;
+      background-color: white;
+      color: #2563eb;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.25rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+    .section {
+      padding: 4rem 0;
+    }
+    
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #1e293b;
+      font-weight: 700;
+    }
+    
+    .section-subtitle {
+      font-size: 1.1rem;
+      color: #64748b;
+      margin-bottom: 2rem;
+    }
+    
+    .card {
+      background-color: white;
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
       padding: 2rem;
+      height: 100%;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    h1 {
+    
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+    
+    .card-title {
       font-size: 1.5rem;
-      font-weight: bold;
+      margin-bottom: 1rem;
+      color: #1e293b;
+      font-weight: 600;
+    }
+    
+    .card-icon {
+      font-size: 2rem;
+      color: #2563eb;
+      margin-bottom: 1rem;
+    }
+    
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    
+    .footer {
+      background-color: #1e293b;
+      color: #94a3b8;
+      padding: 2rem 0;
+      text-align: center;
+    }
+    
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      color: #2563eb;
+      text-decoration: none;
+      margin-bottom: 2rem;
+      font-weight: 500;
+    }
+    
+    .back-link svg {
+      margin-right: 0.5rem;
+    }
+    
+    .back-link:hover {
+      text-decoration: underline;
+    }
+    
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .timeline::after {
+      content: '';
+      position: absolute;
+      width: 6px;
+      background-color: #e2e8f0;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -3px;
+      border-radius: 3px;
+    }
+    
+    .timeline-item {
+      padding: 10px 40px;
+      position: relative;
+      width: 50%;
+      box-sizing: border-box;
+    }
+    
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: white;
+      border: 4px solid #2563eb;
+      border-radius: 50%;
+      top: 15px;
+      z-index: 1;
+    }
+    
+    .left {
+      left: 0;
+    }
+    
+    .right {
+      left: 50%;
+    }
+    
+    .left::after {
+      right: -10px;
+    }
+    
+    .right::after {
+      left: -10px;
+    }
+    
+    .timeline-content {
+      padding: 20px;
+      background-color: white;
+      border-radius: 6px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+    .timeline-content h3 {
+      margin-top: 0;
+      color: #2563eb;
+    }
+    
+    @media screen and (max-width: 768px) {
+      .timeline::after {
+        left: 31px;
+      }
+      
+      .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+      }
+      
+      .timeline-item::after {
+        left: 21px;
+      }
+      
+      .left::after, .right::after {
+        left: 21px;
+      }
+      
+      .right {
+        left: 0;
+      }
+      
+      .nav-container {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem 0;
+      }
+      
+      .navigation {
+        width: 100%;
+        justify-content: space-between;
+        overflow-x: auto;
+        gap: 1rem;
+      }
     }
   </style>
 </head>
 <body>
-  <div id="app">
-    <h1>Fair Price Pharma Stakeholder Mapping</h1>
-    <pre class="markmap">
-# Fair Price Pharma Stakeholder Mapping
-## Internal Stakeholders
-- Board / Executive / Investors
-  - MS & PK
-  - Other Founders
-- Staff
-  - Pharmacists
-  - Chemists
-  - Operations
-
-## External Stakeholders
-- Patients
-  - Those accessing FPP Rx
-  - Community of PWUD at-large
-- Community Organizations
-  - Ancillary Care Providers
-  - Advocacy Networks
-  - Hope to Health
-- Research & Clinical Practice
-  - Academic Practice Hybrids (BC-CfE, BC-CSU, CHEOS)
-  - Institutional Academic (UBC, SFU, Pharmacology)
-- Regulatory Authorities
-  - Health Canada
-  - BC Ministry of Health
-  - College of Pharmacists of BC
-  - Local Health Authorities (VCH, PHC, FHA, NHA, IH)
-- Prescribers
-  - Nurse Practitioners
-  - Family Doctors
-  - Addiction Medicine Specialists
-- Law Enforcement & Municipal Authorities
-  - Vancouver Police Department
-  - City of Vancouver
-  - Federal Ministry of Public Safety
-- Media & Advocacy Groups
-- General Public & Local Residents
-  - Strathcona Neighbourhood Association
-    </pre>
+  <!-- Header & Navigation -->
+  <header class="header">
+    <div class="container nav-container">
+      <div class="logo">Fair Price Pharma Proposal</div>
+      <nav class="navigation">
+        <a href="index.html" class="nav-link active">Executive Summary</a>
+        <a href="context.html" class="nav-link">Background</a>
+        <a href="stakeholder-map.html" class="nav-link">Stakeholder Map</a>
+        <a href="stakeholders.html" class="nav-link">Stakeholder Matrix</a>
+        <a href="media-strategy.html" class="nav-link">Media Strategy</a>
+        <a href="website.html" class="nav-link">Website Redesign</a>
+        <a href="implementation.html" class="nav-link">Implementation</a>
+      </nav>
+    </div>
+  </header>
+  
+  <!-- Back to homepage link -->
+  <div class="container" style="padding-top: 2rem;">
+    <a href="/" class="back-link">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+      Back to Dr. Jamie Forrest's Homepage
+    </a>
   </div>
+  
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1>Fair Price Pharma Stakeholder Engagement Strategy</h1>
+      <p>A comprehensive proposal for stakeholder engagement, media strategy, and implementation planning to support Fair Price Pharma's mission of improving pharmaceutical access.</p>
+      <a href="#executive-summary" class="cta-button">View Executive Summary</a>
+    </div>
+  </section>
+  
+  <!-- Executive Summary Section -->
+  <section class="section" id="executive-summary">
+    <div class="container">
+      <h2 class="section-title">Executive Summary</h2>
+      <p class="section-subtitle">An overview of our comprehensive stakeholder engagement strategy for Fair Price Pharma.</p>
+      
+      <div class="card" style="margin-bottom: 3rem;">
+        <h3 style="color: #2563eb; font-size: 1.3rem; margin-bottom: 1rem;">Project Overview</h3>
+        <p>Fair Price Pharma (FPP) is positioned at a critical juncture in addressing the pharmaceutical needs of vulnerable populations. This proposal outlines a comprehensive stakeholder engagement strategy to support FPP's mission of improving pharmaceutical access through innovative approaches.</p>
+        <p>Our strategy encompasses stakeholder mapping and analysis, strategic communications planning, and implementation recommendations designed to maximize positive impact and mitigate potential challenges. By adopting this holistic approach, FPP will be positioned to effectively engage with key stakeholders across healthcare, policy, community, and academic sectors.</p>
+      </div>
+      
+      <div class="grid">
+        <div class="card">
+          <div class="card-icon"><i class="fas fa-users"></i></div>
+          <h3 class="card-title">Stakeholder Analysis</h3>
+          <p>Comprehensive mapping and prioritization of stakeholders across multiple sectors, with tailored engagement strategies for each group.</p>
+          <p><a href="stakeholder-map.html" style="color: #2563eb; font-weight: 500;">View Analysis →</a></p>
+        </div>
+        <div class="card">
+          <div class="card-icon"><i class="fas fa-bullseye"></i></div>
+          <h3 class="card-title">Strategic Recommendations</h3>
+          <p>Evidence-based recommendations for stakeholder engagement, communications, and partnership development to achieve key objectives.</p>
+          <p><a href="strategy.html" style="color: #2563eb; font-weight: 500;">View Recommendations →</a></p>
+        </div>
+        <div class="card">
+          <div class="card-icon"><i class="fas fa-comments"></i></div>
+          <h3 class="card-title">Media Strategy</h3>
+          <p>Targeted communications approach across digital and traditional channels to build awareness, trust, and support.</p>
+          <p><a href="media-strategy.html" style="color: #2563eb; font-weight: 500;">View Media Strategy →</a></p>
+        </div>
+        <div class="card">
+          <div class="card-icon"><i class="fas fa-tasks"></i></div>
+          <h3 class="card-title">Implementation Plan</h3>
+          <p>Phased approach to implementation with clear timelines, resource requirements, and success metrics.</p>
+          <p><a href="implementation.html" style="color: #2563eb; font-weight: 500;">View Implementation Plan →</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Key Objectives Section -->
+  <section class="section" style="background-color: white;">
+    <div class="container">
+      <h2 class="section-title">Key Objectives</h2>
+      <p class="section-subtitle">This proposal aims to achieve the following objectives for Fair Price Pharma:</p>
+      
+      <div style="max-width: 800px; margin: 0 auto;">
+        <div style="display: flex; align-items: flex-start; margin-bottom: 1.5rem;">
+          <div style="background-color: #2563eb; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 1rem; flex-shrink: 0;">1</div>
+          <div>
+            <h3 style="margin: 0 0 0.5rem 0; color: #1e293b;">Build a Stakeholder Ecosystem</h3>
+            <p style="margin: 0; color: #64748b;">Develop a comprehensive understanding of all stakeholders and their interrelationships to inform strategic engagement.</p>
+          </div>
+        </div>
+        <div style="display: flex; align-items: flex-start; margin-bottom: 1.5rem;">
+          <div style="background-color: #2563eb; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 1rem; flex-shrink: 0;">2</div>
+          <div>
+            <h3 style="margin: 0 0 0.5rem 0; color: #1e293b;">Establish Strategic Communications</h3>
+            <p style="margin: 0; color: #64748b;">Create targeted messaging and communications strategies for each stakeholder group to maximize impact and support.</p>
+          </div>
+        </div>
+        <div style="display: flex; align-items: flex-start; margin-bottom: 1.5rem;">
+          <div style="background-color: #2563eb; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 1rem; flex-shrink: 0;">3</div>
+          <div>
+            <h3 style="margin: 0 0 0.5rem 0; color: #1e293b;">Mitigate Engagement Risks</h3>
+            <p style="margin: 0; color: #64748b;">Identify potential challenges and resistance points with proactive strategies to address concerns and build trust.</p>
+          </div>
+        </div>
+        <div style="display: flex; align-items: flex-start;">
+          <div style="background-color: #2563eb; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 1rem; flex-shrink: 0;">4</div>
+          <div>
+            <h3 style="margin: 0 0 0.5rem 0; color: #1e293b;">Support Implementation Success</h3>
+            <p style="margin: 0; color: #64748b;">Provide a practical roadmap for implementation with measurable outcomes and adaptive feedback mechanisms.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Implementation Timeline Section -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Implementation Timeline</h2>
+      <p class="section-subtitle">A phased approach to stakeholder engagement and strategy implementation</p>
+      
+      <div class="timeline">
+        <div class="timeline-item left">
+          <div class="timeline-content">
+            <h3>Phase 1: Initial Engagement</h3>
+            <p>Months 1-2</p>
+            <ul style="padding-left: 1.5rem;">
+              <li>Finalize stakeholder mapping</li>
+              <li>Develop core messaging</li>
+              <li>Begin outreach to priority stakeholders</li>
+            </ul>
+          </div>
+        </div>
+        <div class="timeline-item right">
+          <div class="timeline-content">
+            <h3>Phase 2: Relationship Building</h3>
+            <p>Months 3-4</p>
+            <ul style="padding-left: 1.5rem;">
+              <li>Launch media strategy</li>
+              <li>Establish regular communication channels</li>
+              <li>Conduct stakeholder feedback sessions</li>
+            </ul>
+          </div>
+        </div>
+        <div class="timeline-item left">
+          <div class="timeline-content">
+            <h3>Phase 3: Strategic Partnerships</h3>
+            <p>Months 5-7</p>
+            <ul style="padding-left: 1.5rem;">
+              <li>Formalize key partnerships</li>
+              <li>Implement collaborative projects</li>
+              <li>Assess engagement effectiveness</li>
+            </ul>
+          </div>
+        </div>
+        <div class="timeline-item right">
+          <div class="timeline-content">
+            <h3>Phase 4: Sustainability & Growth</h3>
+            <p>Months 8-12</p>
+            <ul style="padding-left: 1.5rem;">
+              <li>Refine engagement strategies</li>
+              <li>Scale successful approaches</li>
+              <li>Establish long-term stakeholder management system</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Call to Action Section -->
+  <section class="section" style="background-color: #2563eb; color: white; text-align: center;">
+    <div class="container">
+      <h2 style="font-size: 2rem; margin-bottom: 1rem;">Ready to Explore the Full Proposal?</h2>
+      <p style="font-size: 1.1rem; max-width: 800px; margin: 0 auto 2rem;">Navigate through the detailed sections of our proposal to understand the comprehensive stakeholder engagement strategy for Fair Price Pharma.</p>
+      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem;">
+        <a href="stakeholder-map.html" class="cta-button">Stakeholder Map</a>
+        <a href="stakeholders.html" class="cta-button">Stakeholder Matrix</a>
+        <a href="media-strategy.html" class="cta-button">Media Strategy</a>
+        <a href="feedback.html" class="cta-button" style="background-color: #10b981; color: white;">Provide Feedback</a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>© 2025 Dr. Jamie Forrest | Prepared for Fair Price Pharma</p>
+    </div>
+  </footer>
+  
+  <!-- Scripts -->
+  <script src="scripts/auth.js"></script>
+  <script src="scripts/navigation.js"></script>
 </body>
 </html>

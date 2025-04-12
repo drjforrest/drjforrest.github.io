@@ -3,21 +3,101 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Stakeholder Engagement Matrix</title>
+  <title>Fair Price Pharma - Stakeholder Engagement Matrix</title>
+  <link href="styles/tailwind.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <style>
     body {
-      font-family: system-ui, sans-serif;
-      background: #f9fafb;
-      margin: 2rem;
-      color: #1e293b;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      color: #334155;
+      line-height: 1.6;
+      background-color: #f8fafc;
+      margin: 0;
+      padding: 0;
     }
-    h1 {
-      font-size: 1.75rem;
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+    }
+    
+    .header {
+      background-color: white;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: #2563eb;
+    }
+    
+    .navigation {
+      display: flex;
+      gap: 2rem;
+    }
+    
+    .nav-link {
+      color: #64748b;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      padding: 0.5rem 0;
+      border-bottom: 2px solid transparent;
+    }
+    
+    .nav-link:hover, .nav-link.active {
+      color: #2563eb;
+      border-bottom: 2px solid #2563eb;
+    }
+    
+    .page-header {
+      background-color: #1e293b;
+      color: white;
+      padding: 3rem 0;
+    }
+    
+    .page-title {
+      font-size: 2.5rem;
       margin-bottom: 1rem;
+      font-weight: 700;
     }
-    p {
-      max-width: 700px;
+    
+    .page-subtitle {
+      font-size: 1.25rem;
+      max-width: 800px;
+      opacity: 0.8;
     }
+    
+    .section {
+      padding: 4rem 0;
+    }
+    
+    .content-section {
+      background-color: white;
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+    
+    .content-section h3 {
+      color: #2563eb;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+    
     .airtable-embed {
       margin-top: 2rem;
       width: 100%;
@@ -25,28 +105,250 @@
       border: 1px solid #ccc;
       border-radius: 8px;
     }
+    
+    .next-section {
+      text-align: right;
+      margin-top: 2rem;
+    }
+    
+    .next-link {
+      display: inline-flex;
+      align-items: center;
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .next-link:hover {
+      transform: translateX(5px);
+    }
+    
+    .next-link i {
+      margin-left: 0.5rem;
+    }
+    
+    .footer {
+      background-color: #1e293b;
+      color: #94a3b8;
+      padding: 2rem 0;
+      text-align: center;
+    }
+    
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      color: #2563eb;
+      text-decoration: none;
+      margin-bottom: 2rem;
+      font-weight: 500;
+    }
+    
+    .back-link svg {
+      margin-right: 0.5rem;
+    }
+    
+    .back-link:hover {
+      text-decoration: underline;
+    }
+    
+    .download-link {
+      display: inline-flex;
+      align-items: center;
+      color: #2563eb;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      background-color: #eff6ff;
+      border-radius: 0.25rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      margin-top: 1rem;
+    }
+    
+    .download-link:hover {
+      background-color: #dbeafe;
+    }
+    
+    .download-link i {
+      margin-right: 0.5rem;
+    }
+    
+    @media screen and (max-width: 768px) {
+      .nav-container {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem 0;
+      }
+      
+      .navigation {
+        width: 100%;
+        justify-content: space-between;
+        overflow-x: auto;
+        gap: 1rem;
+      }
+      
+      .airtable-embed {
+        height: 500px;
+      }
+    }
   </style>
 </head>
 <body>
-  <h1>Stakeholder Engagement Matrix</h1>
-  <p>
-    This interactive Airtable table outlines Fair Price Pharma’s full stakeholder ecosystem,
-    including tailored objectives and actions for each group. The table reflects live updates as the engagement
-    strategy evolves.
-  </p>
-
-  <!-- Replace the URL below with your actual Airtable embed URL -->
-  <iframe
-    class="airtable-embed"
-    src="https://airtable.com/embed/YOUR_AIRTABLE_VIEW_URL"
-    frameborder="0"
-    onmousewheel=""
-    style="background: transparent; border: 1px solid #ccc;"></iframe>
-
-  <p style="margin-top: 1rem;">
-    <a href="/data/FPP_Stakeholder_Engagement.csv" download>
-      📥 Download CSV version
+  <!-- Header & Navigation -->
+  <header class="header">
+    <div class="container nav-container">
+      <div class="logo">Fair Price Pharma Proposal</div>
+      <nav class="navigation">
+        <a href="index.html" class="nav-link">Executive Summary</a>
+        <a href="context.html" class="nav-link">Background</a>
+        <a href="stakeholder-map.html" class="nav-link">Stakeholder Map</a>
+        <a href="stakeholders.html" class="nav-link active">Stakeholder Matrix</a>
+        <a href="media-strategy.html" class="nav-link">Media Strategy</a>
+        <a href="website.html" class="nav-link">Website Redesign</a>
+        <a href="implementation.html" class="nav-link">Implementation</a>
+      </nav>
+    </div>
+  </header>
+  
+  <!-- Back to homepage link -->
+  <div class="container" style="padding-top: 2rem;">
+    <a href="/" class="back-link">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+      Back to Dr. Jamie Forrest's Homepage
     </a>
-  </p>
+  </div>
+  
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1 class="page-title">Stakeholder Engagement Matrix</h1>
+      <p class="page-subtitle">Detailed analysis and engagement strategies for each stakeholder group</p>
+    </div>
+  </section>
+  
+  <!-- Main Content Area -->
+  <section class="section">
+    <div class="container">
+      <div class="content-section">
+        <h3>Stakeholder Engagement Strategy</h3>
+        <p>This interactive matrix outlines Fair Price Pharma's full stakeholder ecosystem, including tailored objectives, actions, and engagement strategies for each group. The matrix reflects the strategic approach to managing relationships with all key stakeholders and will be maintained as a living document as the engagement strategy evolves.</p>
+        
+        <p>Key features of the stakeholder engagement matrix include:</p>
+        <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+          <li><strong>Tailored Objectives:</strong> Specific goals for each stakeholder relationship that align with Fair Price Pharma's mission</li>
+          <li><strong>Actionable Strategies:</strong> Concrete steps for engaging each stakeholder group effectively</li>
+          <li><strong>Influence & Interest Mapping:</strong> Assessment of each stakeholder's level of influence and interest to prioritize engagement efforts</li>
+          <li><strong>Engagement Timeline:</strong> Recommended timing and frequency of interactions with each stakeholder group</li>
+          <li><strong>Success Metrics:</strong> Measurable indicators to evaluate the effectiveness of engagement efforts</li>
+        </ul>
+      </div>
+      
+      <div class="content-section">
+        <h3>Interactive Stakeholder Tracking System</h3>
+        <p>We've developed a comprehensive Airtable-based stakeholder management system that provides real-time tracking of stakeholder engagement, sentiment analysis, news monitoring, social media activity, and MOU status. This powerful tool enables Fair Price Pharma to:</p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+          <div style="background-color: #f8fafc; border-radius: 0.5rem; padding: 1.5rem; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);">
+            <div style="color: #2563eb; font-size: 1.5rem; margin-bottom: 0.5rem;"><i class="fas fa-user-check"></i></div>
+            <h4 style="color: #1e293b; font-weight: 600; margin-top: 0;">Track Engagement Status</h4>
+            <p>Monitor all interactions with stakeholders, schedule follow-ups, and ensure no relationship falls through the cracks.</p>
+          </div>
+          <div style="background-color: #f8fafc; border-radius: 0.5rem; padding: 1.5rem; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);">
+            <div style="color: #2563eb; font-size: 1.5rem; margin-bottom: 0.5rem;"><i class="fas fa-chart-line"></i></div>
+            <h4 style="color: #1e293b; font-weight: 600; margin-top: 0;">Analyze Sentiment Trends</h4>
+            <p>Track evolving attitudes and opinions among stakeholder groups to proactively address concerns or leverage support.</p>
+          </div>
+          <div style="background-color: #f8fafc; border-radius: 0.5rem; padding: 1.5rem; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);">
+            <div style="color: #2563eb; font-size: 1.5rem; margin-bottom: 0.5rem;"><i class="fas fa-newspaper"></i></div>
+            <h4 style="color: #1e293b; font-weight: 600; margin-top: 0;">Monitor News & Social</h4>
+            <p>Stay informed about relevant coverage and social media activity that could impact stakeholder relationships.</p>
+          </div>
+          <div style="background-color: #f8fafc; border-radius: 0.5rem; padding: 1.5rem; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);">
+            <div style="color: #2563eb; font-size: 1.5rem; margin-bottom: 0.5rem;"><i class="fas fa-file-signature"></i></div>
+            <h4 style="color: #1e293b; font-weight: 600; margin-top: 0;">Track MOU Progress</h4>
+            <p>Monitor the status of Memorandums of Understanding with key partners, from draft to signature to implementation.</p>
+          </div>
+        </div>
+        
+        <!-- Airtable Embed -->
+        <iframe
+          class="airtable-embed"
+          src="https://airtable.com/embed/appkb0tqaUR9npPx9/shrOZarsuvCmK5vEL"
+          frameborder="0"
+          onmousewheel=""
+          style="background: transparent; border: 1px solid #ccc;"></iframe>
+        
+        <p style="margin-top: 1.5rem;"><strong>Note:</strong> This is a live, interactive tracking system that will be continuously updated throughout the stakeholder engagement process. The Airtable backend can be customized to meet Fair Price Pharma's evolving needs.</p>
+        
+        <a href="#" class="download-link">
+          <i class="fas fa-download"></i>
+          Download Stakeholder Engagement Plan (PDF)
+        </a>
+      </div>
+      
+      <div class="content-section">
+        <h3>Engagement Prioritization Framework</h3>
+        <p>Based on our stakeholder analysis, we've developed a prioritization framework to guide Fair Price Pharma's engagement efforts:</p>
+        
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin: 2rem 0;">
+          <div style="background-color: #fee2e2; border-radius: 0.5rem; padding: 1.5rem; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);">
+            <h4 style="color: #991b1b; font-weight: 600; margin-top: 0;">High Priority</h4>
+            <ul style="margin-left: 1.5rem;">
+              <li>Regulatory Authorities</li>
+              <li>Prescribers</li>
+              <li>Patients</li>
+              <li>Board & Executive</li>
+            </ul>
+          </div>
+          <div style="background-color: #fef3c7; border-radius: 0.5rem; padding: 1.5rem; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);">
+            <h4 style="color: #92400e; font-weight: 600; margin-top: 0;">Medium Priority</h4>
+            <ul style="margin-left: 1.5rem;">
+              <li>Community Organizations</li>
+              <li>Research & Clinical Practice</li>
+              <li>Staff</li>
+              <li>Local Health Authorities</li>
+            </ul>
+          </div>
+          <div style="background-color: #d1fae5; border-radius: 0.5rem; padding: 1.5rem; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);">
+            <h4 style="color: #065f46; font-weight: 600; margin-top: 0;">Ongoing Monitoring</h4>
+            <ul style="margin-left: 1.5rem;">
+              <li>Media & Advocacy Groups</li>
+              <li>General Public & Local Residents</li>
+              <li>Law Enforcement</li>
+            </ul>
+          </div>
+          <div style="background-color: #dbeafe; border-radius: 0.5rem; padding: 1.5rem; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);">
+            <h4 style="color: #1e40af; font-weight: 600; margin-top: 0;">Engagement Principles</h4>
+            <ul style="margin-left: 1.5rem;">
+              <li>Transparency in communications</li>
+              <li>Regular, proactive outreach</li>
+              <li>Evidence-based messaging</li>
+              <li>Active listening and adaptation</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="next-section">
+        <a href="media-strategy.html" class="next-link">
+          Continue to Media Strategy
+          <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>© 2025 Dr. Jamie Forrest | Prepared for Fair Price Pharma</p>
+    </div>
+  </footer>
+  
+  <!-- Scripts -->
+  <script src="scripts/auth.js"></script>
+  <script src="scripts/navigation.js"></script>
 </body>
 </html>

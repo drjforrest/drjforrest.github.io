@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fair Price Pharma - Proposal Feedback</title>
+  <link href="styles/tailwind.css" rel="stylesheet">
+  <link href="styles/main.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    .feedback-container {
+      height: 800px;
+      width: 100%;
+      margin: 2rem 0;
+      border-radius: 0.5rem;
+      overflow: hidden;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    
+    .feedback-iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    
+    @media screen and (max-width: 768px) {
+      .feedback-container {
+        height: 1000px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header & Navigation -->
+  <header class="header">
+    <div class="container nav-container">
+      <div class="logo">Fair Price Pharma Proposal</div>
+      <nav class="navigation">
+        <a href="index.html" class="nav-link">Executive Summary</a>
+        <a href="context.html" class="nav-link">Background</a>
+        <a href="stakeholder-map.html" class="nav-link">Stakeholder Map</a>
+        <a href="stakeholders.html" class="nav-link">Stakeholder Matrix</a>
+        <a href="media-strategy.html" class="nav-link">Media Strategy</a>
+        <a href="website.html" class="nav-link">Website Redesign</a>
+        <a href="implementation.html" class="nav-link">Implementation</a>
+        <a href="feedback.html" class="nav-link active">Feedback</a>
+      </nav>
+    </div>
+  </header>
+  
+  <!-- Back to homepage link -->
+  <div class="container" style="padding-top: 2rem;">
+    <a href="/" class="back-link">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+      Back to Dr. Jamie Forrest's Homepage
+    </a>
+  </div>
+  
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1 class="page-title">Provide Feedback</h1>
+      <p class="page-subtitle">Your thoughts on the Fair Price Pharma proposal are valuable to us</p>
+    </div>
+  </section>
+  
+  <!-- Main Content Area -->
+  <section class="section">
+    <div class="container">
+      <div class="content-section">
+        <h3>Proposal Feedback Form</h3>
+        <p>Thank you for reviewing our proposal for Fair Price Pharma. Your feedback is crucial to helping us refine and improve our approach. Please take a moment to share your thoughts using the form below.</p>
+        
+        <div class="feedback-container">
+          <iframe class="feedback-iframe" src="https://airtable.com/embed/appkb0tqaUR9npPx9/pagAXVmoFV6khWy0S/form"></iframe>
+        </div>
+        
+        <p><em>Your feedback will be used to improve our approach and ensure we're addressing all key considerations. All responses are confidential and will only be used for proposal refinement.</em></p>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>© 2025 Dr. Jamie Forrest | Prepared for Fair Price Pharma</p>
+    </div>
+  </footer>
+  
+  <!-- Scripts -->
+  <script src="scripts/auth.js"></script>
+  <script src="scripts/navigation.js"></script>
+</body>
+</html>
