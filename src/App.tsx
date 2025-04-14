@@ -1,19 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { Lock } from 'lucide-react';
 
-// Pages
+// Pages - Lazy loaded
+const ExecutiveSummary = React.lazy(() => import('./pages/ExecutiveSummary'));
+const Context = React.lazy(() => import('./pages/Context'));
+const Stakeholders = React.lazy(() => import('./pages/Stakeholders'));
+const MediaStrategy = React.lazy(() => import('./pages/MediaStrategy'));
+const WebsiteRedesign = React.lazy(() => import('./pages/WebsiteRedesign'));
+const Implementation = React.lazy(() => import('./pages/Implementation'));
+
+// Components that are needed immediately
 import Login from './pages/Login';
-import ExecutiveSummary from './pages/ExecutiveSummary';
-import Context from './pages/Context';
-import Stakeholders from './pages/Stakeholders';
-import MediaStrategy from './pages/MediaStrategy';
-import WebsiteRedesign from './pages/WebsiteRedesign';
-import Implementation from './pages/Implementation';
-
-// Components
 import Header from './components/Header';
 import Footer from './components/Footer';
+
+// Loading component
+const LoadingSpinner: React.FC = () => (
+  <div className="flex items-center justify-center min-h-[200px]">
+    <div className="spinner"></div>
+  </div>
+);
 
 const App: React.FC = () => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
@@ -42,7 +48,13 @@ const App: React.FC = () => {
 
   // Protected route component
   const ProtectedRoute: React.FC<{ element: React.ReactNode }> = ({ element }) => {
-    return isAuthenticated ? <>{element}</> : <Navigate to="/" replace />;
+    return isAuthenticated ? (
+      <Suspense fallback={<LoadingSpinner />}>
+        {element}
+      </Suspense>
+    ) : (
+      <Navigate to="/" replace />
+    );
   };
 
   return (
