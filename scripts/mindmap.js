@@ -19,7 +19,9 @@ document.addEventListener('DOMContentLoaded', function() {
       // Create a SVG element for the mindmap
       const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
       svg.setAttribute('id', 'stakeholder-mindmap');
-      svg.setAttribute('style', 'width: 100%; height: 600px;');
+      svg.setAttribute('style', 'width: 100%; height: 600px; display: block;');
+      svg.setAttribute('width', '100%');
+      svg.setAttribute('height', '600px');
       
       // Remove loading indicator and append SVG
       mindmapContainer.innerHTML = '';
@@ -110,7 +112,13 @@ document.addEventListener('DOMContentLoaded', function() {
       const mm = Markmap.create('#stakeholder-mindmap', {
         autoFit: true, 
         zoom: true,
-        maxWidth: 400, // Maximum node width
+        maxWidth: 300, // Maximum node width
+        duration: 500, // Animation duration
+        style: function(el) {
+          el.style.width = '100%';
+          el.style.height = '600px';
+          el.style.display = 'block';
+        },
         color: (node) => {
           // Custom coloring based on the hierarchy level
           const colorMap = {
@@ -159,10 +167,21 @@ document.addEventListener('DOMContentLoaded', function() {
         mm.fit();
       });
       
-      // Collapse to first level initially for better viewing
+      // Add resize handler to adjust the mindmap when window resizes
+      window.addEventListener('resize', () => {
+        setTimeout(() => {
+          if (mm && typeof mm.fit === 'function') {
+            mm.fit();
+          }
+        }, 300);
+      });
+      
+      // Initial fit with a slight delay to ensure proper rendering
       setTimeout(() => {
-        mm.collapseAll(1);
-      }, 200);
+        if (mm && typeof mm.fit === 'function') {
+          mm.fit();
+        }
+      }, 500);
       
     } catch (error) {
       console.error('Error creating mindmap:', error);

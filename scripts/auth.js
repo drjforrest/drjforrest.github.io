@@ -1,7 +1,10 @@
 // Simple authentication check
 (function() {
-  // Don't check authentication on the index page itself
-  if (window.location.pathname.endsWith('index.html') || window.location.pathname === '/') {
+  // Get the current path
+  const path = window.location.pathname;
+  
+  // Don't check authentication on the index/login page
+  if (path.endsWith('index.html') || path === '/' || path === '' || path.match(/\/$/) || path.match(/\/index(\.html)?$/)) {
     return;
   }
   
