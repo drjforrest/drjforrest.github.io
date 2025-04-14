@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { Markmap, loadCSS, loadJS } from 'markmap-view';
 
 interface StakeholderMindmapProps {
   // Props if needed
@@ -19,48 +20,13 @@ const StakeholderMindmap: React.FC<StakeholderMindmapProps> = () => {
     `;
     containerRef.current.appendChild(loadingDiv);
     
-    // Function to load D3 and Markmap libraries
-    const loadLibraries = async () => {
+    // Function to load libraries and create mindmap
+    const initializeMindmap = async () => {
       try {
-        // First load D3 (dependency for markmap)
-        await loadScript('https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js');
+        // Load required assets
+        await loadCSS([{ type: 'stylesheet', data: { href: 'https://cdn.jsdelivr.net/npm/markmap-toolbar@0.15.3/dist/style.css' } }]);
+        await loadJS([{ type: 'script', data: { src: 'https://cdn.jsdelivr.net/npm/markmap-toolbar@0.15.3/dist/index.js' } }]);
         
-        // Then load markmap-view
-        await loadScript('https://cdn.jsdelivr.net/npm/markmap-view@0.15.3');
-        
-        // Create the mindmap once libraries are loaded
-        createMindmap();
-      } catch (error) {
-        console.error('Failed to load libraries:', error);
-        showFallbackImage();
-      }
-    };
-    
-    // Load a script dynamically
-    const loadScript = (src: string): Promise<void> => {
-      return new Promise((resolve, reject) => {
-        const script = document.createElement('script');
-        script.src = src;
-        script.onload = () => resolve();
-        script.onerror = () => reject(new Error(`Failed to load script: ${src}`));
-        document.head.appendChild(script);
-      });
-    };
-    
-    // Show fallback image if the interactive map fails
-    const showFallbackImage = () => {
-      if (!containerRef.current) return;
-      containerRef.current.innerHTML = `
-        <div class="mindmap-error p-6 text-center text-red-600">
-          <p class="mb-4">Interactive mindmap could not be loaded. Showing static image instead.</p>
-          <img src="/stakeholder-mindmap.png" alt="Fair Price Pharma Stakeholder Mapping" class="max-w-full rounded-lg shadow-md" />
-        </div>
-      `;
-    };
-    
-    // Create the mindmap
-    const createMindmap = () => {
-      try {
         if (!containerRef.current) return;
         
         // Clear loading indicator
@@ -161,104 +127,103 @@ const StakeholderMindmap: React.FC<StakeholderMindmapProps> = () => {
 #### Strathcona Neighborhood Association
 #### General Public & Local Residents
 `;
-
-        // Access the markmap global objects
-        type Markmap = any;
-        type Transformer = any;
         
-        const window = (globalThis as any).window;
+        // Transform markdown to data structure
+        const transformer = new (window as any).markmap.Transformer();
+        const { root } = transformer.transform(markdownContent);
         
-        if (window.markmap) {
-          const { Transformer, Markmap } = window.markmap;
-          
-          // Transform markdown to data structure
-          const transformer = new Transformer();
-          const { root } = transformer.transform(markdownContent);
-          
-          // Create markmap
-          const mm = Markmap.create('#stakeholder-mindmap', {
-            autoFit: true,
-            duration: 500,
-            maxWidth: 300,
-            color: (node: any) => {
-              // Color coding based on category
-              const colorMap: Record<string, string> = {
-                'Regulatory Authorities': '#fb8072',
-                'Healthcare Partners': '#ffffb3',
-                'Direct Service Providers': '#8dd3c7',
-                'Community': '#80b1d3', 
-                'Academic & Research': '#bebada',
-                'Government & Authorities': '#fdb462',
-                'Media & Advocacy Groups': '#d9d9d9',
-                'General Public & Local Residents': '#bc80bd',
-                'Internal Stakeholders': '#b3de69'
-              };
-              
-              // Match node text against categories
-              for (const [category, color] of Object.entries(colorMap)) {
-                if (node.data.name.includes(category)) return color;
-              }
-              
-              // Default colors based on depth
-              const defaultColors = ['#19404C', '#1f5061', '#266277', '#2c748d', '#3387a3', '#399ab9'];
-              return defaultColors[Math.min(node.data.depth, defaultColors.length - 1)];
+        // Create markmap with proper typing
+        const mm = Markmap.create('#stakeholder-mindmap', {
+          autoFit: true,
+          duration: 500,
+          maxWidth: 300,
+          color: (node: any) => {
+            // Color coding based on category
+            const colorMap: Record<string, string> = {
+              'Regulatory Authorities': '#fb8072',
+              'Healthcare Partners': '#ffffb3',
+              'Direct Service Providers': '#8dd3c7',
+              'Community': '#80b1d3', 
+              'Academic & Research': '#bebada',
+              'Government & Authorities': '#fdb462',
+              'Media & Advocacy Groups': '#d9d9d9',
+              'General Public & Local Residents': '#bc80bd',
+              'Internal Stakeholders': '#b3de69'
+            };
+            
+            // Match node text against categories
+            for (const [category, color] of Object.entries(colorMap)) {
+              if (node.name.includes(category)) return color;
             }
-          }, root);
-          
-          // Add event listeners for buttons
-          const expandAllBtn = document.getElementById('expand-all');
-          const collapseAllBtn = document.getElementById('collapse-all');
-          const fitViewBtn = document.getElementById('fit-view');
-          
-          if (expandAllBtn) {
-            expandAllBtn.addEventListener('click', () => mm.expandAll());
+            
+            // Default colors based on depth
+            const defaultColors = ['#19404C', '#1f5061', '#266277', '#2c748d', '#3387a3', '#399ab9'];
+            return defaultColors[Math.min(node.depth, defaultColors.length - 1)];
           }
-          
-          if (collapseAllBtn) {
-            collapseAllBtn.addEventListener('click', () => mm.collapseAll(1));
-          }
-          
-          if (fitViewBtn) {
-            fitViewBtn.addEventListener('click', () => mm.fit());
-          }
-          
-          // Make sure it fits initially
-          setTimeout(() => mm.fit(), 300);
-          
-          // Handle window resize
-          const handleResize = () => {
-            if (mm && mm.fit) {
-              mm.fit();
-            }
-          };
-          
-          window.addEventListener('resize', handleResize);
-          
-          // Collapse to first level for initial view
-          setTimeout(() => mm.collapseAll(1), 500);
-          
-          // Return cleanup function
-          return () => {
-            window.removeEventListener('resize', handleResize);
-            expandAllBtn?.removeEventListener('click', () => mm.expandAll());
-            collapseAllBtn?.removeEventListener('click', () => mm.collapseAll(1));
-            fitViewBtn?.removeEventListener('click', () => mm.fit());
-          };
-        } else {
-          throw new Error('Markmap library not loaded properly');
+        }, root);
+        
+        // Add event listeners for buttons
+        const expandAllBtn = document.getElementById('expand-all');
+        const collapseAllBtn = document.getElementById('collapse-all');
+        const fitViewBtn = document.getElementById('fit-view');
+        
+        if (expandAllBtn) {
+          expandAllBtn.addEventListener('click', () => (mm as any).expandAll());
         }
+        
+        if (collapseAllBtn) {
+          collapseAllBtn.addEventListener('click', () => (mm as any).collapseAll(1));
+        }
+        
+        if (fitViewBtn) {
+          fitViewBtn.addEventListener('click', () => mm.fit());
+        }
+        
+        // Make sure it fits initially
+        setTimeout(() => mm.fit(), 300);
+        
+        // Handle window resize
+        const handleResize = () => {
+          if (mm && mm.fit) {
+            mm.fit();
+          }
+        };
+        
+        window.addEventListener('resize', handleResize);
+        
+        // Collapse to first level for initial view
+        setTimeout(() => (mm as any).collapseAll(1), 500);
+        
+        // Return cleanup function
+        return () => {
+          window.removeEventListener('resize', handleResize);
+          expandAllBtn?.removeEventListener('click', () => (mm as any).expandAll());
+          collapseAllBtn?.removeEventListener('click', () => (mm as any).collapseAll(1));
+          fitViewBtn?.removeEventListener('click', () => mm.fit());
+        };
       } catch (error) {
         console.error('Error creating mindmap:', error);
         showFallbackImage();
       }
     };
     
-    // Start the loading process
-    loadLibraries();
+    // Show fallback image if the interactive map fails
+    const showFallbackImage = () => {
+      if (!containerRef.current) return;
+      containerRef.current.innerHTML = `
+        <div class="mindmap-error p-6 text-center text-red-600">
+          <p class="mb-4">Interactive mindmap could not be loaded. Showing static image instead.</p>
+          <img src="/stakeholder-mindmap.png" alt="Fair Price Pharma Stakeholder Mapping" class="max-w-full rounded-lg shadow-md" />
+        </div>
+      `;
+    };
+    
+    // Initialize the mindmap
+    initializeMindmap();
     
     // Cleanup function
     return () => {
-      // Any cleanup like removing event listeners if needed
+      // Cleanup handled in initializeMindmap
     };
   }, []);
   

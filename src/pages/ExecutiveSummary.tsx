@@ -5,57 +5,56 @@ import { ArrowRight, Download, CheckCircle, FileText, Users, Megaphone, Globe, L
 const ExecutiveSummary: React.FC = () => {
   return (
     <div>
-      {/* Hero Section */}
-      <section className="hero bg-gradient-to-r from-[#19404C] to-[#2A4551] text-white py-24">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Stakeholder Engagement Strategy for Fair Price Pharma</h1>
-          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto opacity-90">
-            A comprehensive approach to build awareness, trust, and support for Fair Price Pharma's mission to provide pharmaceutical alternatives
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <a href="#key-components" className="btn bg-[#CC9332] text-white px-6 py-3 rounded-md font-semibold hover:bg-opacity-90 transition-colors">
-              View Key Components
-            </a>
-            <a href="/Template_MOU.md" className="btn bg-white text-[#19404C] px-6 py-3 rounded-md font-semibold hover:bg-gray-100 transition-colors inline-flex items-center" download>
-              <Download className="w-5 h-5 mr-2" />
-              Download MOU Template
-            </a>
-          </div>
-        </div>
-      </section>
+          {/* Hero Section */}
+          <section className="hero bg-gradient-to-r from-[#19404C] to-[#2A4551] text-white py-24">
+            <div className="container mx-auto px-4 text-center">
+              <h1 className="text-4xl md:text-5xl font-bold mb-6">Stakeholder Engagement Strategy</h1>
+              <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto opacity-90">
+                A comprehensive approach to build awareness, trust, and sales for Fair Price Pharma
+              </p>
+              <div className="flex flex-wrap justify-center gap-4">
+                <a href="#key-components" className="btn bg-[#CC9332] text-white px-6 py-3 rounded-md font-semibold hover:bg-opacity-90 transition-colors">
+                  View Key Components
+                </a>
+                <a href="/Template_MOU.md" className="btn bg-white text-[#19404C] px-6 py-3 rounded-md font-semibold hover:bg-gray-100 transition-colors inline-flex items-center" download>
+                  <Download className="w-5 h-5 mr-2" />
+                  Download MOU Template
+                </a>
+              </div>
+            </div>
+          </section>
 
-      {/* Executive Summary Section */}
-      <section className="py-16 px-4">
-        <div className="container mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-[#19404C] mb-4">Executive Summary</h2>
-          <p className="text-center text-[#63757D] mb-12 max-w-3xl mx-auto">
-            This proposal details a strategic stakeholder engagement approach designed to support Fair Price Pharma's upcoming facility launch
-          </p>
-          
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="card bg-white rounded-lg shadow-md p-8">
-              <h3 className="text-xl font-semibold text-[#19404C] mb-4">Challenge</h3>
-              <p className="text-[#63757D]">
-                Fair Price Pharma is launching a first-of-its-kind pharmaceutical facility requiring careful navigation of regulatory, community, and healthcare stakeholder interests. Success depends on building support across diverse groups with varying concerns and priorities.
-              </p>
-            </div>
-            
-            <div className="card bg-white rounded-lg shadow-md p-8">
-              <h3 className="text-xl font-semibold text-[#19404C] mb-4">Approach</h3>
-              <p className="text-[#63757D]">
-                Our strategy provides a structured, evidence-based engagement model that prioritizes stakeholders based on influence and interest, building support through tailored communications and relationship-building activities across four strategic phases.
-              </p>
-            </div>
-            
-            <div className="card bg-white rounded-lg shadow-md p-8">
-              <h3 className="text-xl font-semibold text-[#19404C] mb-4">Outcome</h3>
-              <p className="text-[#63757D]">
-                Successful implementation will create a supportive ecosystem of engaged stakeholders, reduce resistance, and establish Fair Price Pharma as a trusted partner in providing pharmaceutical alternatives while supporting harm reduction efforts.
-              </p>
-            </div>
+          <section className="py-16 px-4">
+      <div className="container mx-auto">
+        <h2 className="text-3xl md:text-4xl font-bold text-center text-[#19404C] mb-4">Executive Summary</h2>
+        <p className="text-center text-[#63757D] mb-12 max-w-3xl mx-auto">
+          This proposal outlines a strategic stakeholder engagement and communications framework to support the launch of Fair Price Pharma’s diacetylmorphine facility in British Columbia.
+        </p>
+
+        <div className="grid md:grid-cols-3 gap-8">
+          <div className="card bg-white rounded-lg shadow-md p-8">
+            <h3 className="text-xl font-semibold text-[#19404C] mb-4">Challenge</h3>
+            <p className="text-[#63757D]">
+              While FPP’s mission aligns with public health goals, its visibility and digital presence are currently limited. Misinformation, policy ambiguity, and stigma create a complex communications environment requiring careful positioning, especially in media narratives and prescriber engagement.
+            </p>
+          </div>
+
+          <div className="card bg-white rounded-lg shadow-md p-8">
+            <h3 className="text-xl font-semibold text-[#19404C] mb-4">Approach</h3>
+            <p className="text-[#63757D]">
+              This strategy introduces a modular Airtable-driven system for managing stakeholder engagement, media campaigns, and sentiment tracking. The framework enables proactive outreach, dynamic message calibration, and precise targeting across stakeholder groups.
+            </p>
+          </div>
+
+          <div className="card bg-white rounded-lg shadow-md p-8">
+            <h3 className="text-xl font-semibold text-[#19404C] mb-4">Outcome</h3>
+            <p className="text-[#63757D]">
+              With implementation, FPP will be positioned as a trusted public health provider. Stakeholder relationships will be systematized, communications will reflect regulatory alignment, and sales will grow through informed engagement with prescribing networks.
+            </p>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
       {/* Key Components Section */}
       <section id="key-components" className="py-16 px-4 bg-gray-50">

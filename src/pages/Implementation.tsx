@@ -5,201 +5,90 @@ import BackLink from '../components/BackLink';
 const Implementation: React.FC = () => {
   return (
     <div>
-      {/* Back to homepage link */}
-      <div className="container mx-auto px-4" style={{ paddingTop: '2rem' }}>
+      {/* Navigation */}
+      <div className="container mx-auto px-4 pt-8">
         <BackLink to="/executive-summary" label="Back to Executive Summary" />
       </div>
 
       {/* Page Header */}
       <PageHeader 
-        title="Implementation Plan & Feedback" 
-        subtitle="Phased roadmap for execution and a place to share your input"
+        title="Implementation Framework"
+        subtitle="A modular Airtable system for stakeholder engagement, media strategy, and team accountability"
       />
 
       {/* Main Content */}
       <section className="py-12 px-4">
         <div className="container mx-auto">
-          <div className="mb-12">
-            <h3 className="text-2xl font-semibold text-[#19404C] mb-4">Implementation Overview</h3>
-            <p className="mb-6">
-              This roadmap supports Fair Price Pharma's 12-month stakeholder engagement plan across four strategic phases. Each phase includes specific deliverables, training, and relationship milestones.
-            </p>
-            <ul className="list-disc pl-6 space-y-2 mb-6">
-              <li><strong>Strategic:</strong> Priority-focused with sequenced activation</li>
-              <li><strong>Iterative:</strong> Monthly review and adaptation cycles</li>
-              <li><strong>Measurable:</strong> Trackable KPIs aligned to timeline</li>
-              <li><strong>Sustainable:</strong> Internal enablement for continuity</li>
-            </ul>
-          </div>
 
-          <div className="timeline mb-16">
-            <div className="max-w-4xl mx-auto">
-              {/* Phase 1 */}
-              <div className="relative pl-10 pb-10 border-l-2 border-[#19404C] ml-6">
-                <div className="absolute left-0 top-0 w-12 h-12 bg-[#fee2e2] rounded-full border-4 border-[#19404C] flex items-center justify-center -ml-6">
-                  <span className="text-[#991b1b] font-bold">1</span>
+          {/* Framework Overview */}
+          <div className="mb-12">
+            <h3 className="text-2xl font-semibold text-[#19404C] mb-4">How the Framework Works</h3>
+            <p className="mb-6 text-gray-700 max-w-3xl">
+              This implementation framework is built using six interconnected Airtable modules. Each module corresponds to a core workstream—campaign execution, stakeholder tracking, sentiment monitoring, SEO optimization, social scheduling, and team roles. Together, they form an operational backbone for Fair Price Pharma's engagement strategy.
+            </p>
+
+            <div className="grid md:grid-cols-2 gap-6 mb-8">
+              {[
+                {
+                  title: '📊 Media Campaign Tracker',
+                  desc: 'Manages campaign objectives, messaging status, publication readiness, and alignment with policy themes.'
+                },
+                {
+                  title: '📰 Media Monitoring & Sentiment',
+                  desc: 'Logs media coverage, tone, platform reach, and stakeholder reactions to ensure real-time visibility.'
+                },
+                {
+                  title: '🔍 SEO Strategy',
+                  desc: 'Tracks key terms, page performance, metadata status, and SEO tactics aligned with policy messaging.'
+                },
+                {
+                  title: '📅 Social Media Calendar',
+                  desc: 'Schedules multi-channel content, assigns responsibility, and records platform engagement metrics.'
+                },
+                {
+                  title: '🤝 Stakeholder Registry',
+                  desc: 'Maps stakeholders by influence, interest, engagement status, and records outreach touchpoints.'
+                },
+                {
+                  title: '👥 Team Roles & Accountability',
+                  desc: 'Assigns task ownership across modules, linking staff and collaborators to active deliverables.'
+                }
+              ].map(({ title, desc }) => (
+                <div key={title} className="bg-white p-5 rounded-lg shadow-sm border-l-4 border-[#19404C]">
+                  <h4 className="text-lg font-semibold mb-2 text-[#19404C]">{title}</h4>
+                  <p className="text-sm text-gray-700">{desc}</p>
                 </div>
-                <div className="bg-white rounded-lg shadow-md p-6">
-                  <div className="inline-block bg-[#fee2e2] text-[#991b1b] text-sm font-semibold px-3 py-1 rounded-full mb-2">
-                    Phase 1: Months 1-2
-                  </div>
-                  <h3 className="text-xl font-semibold text-[#19404C] mb-3">Initial Engagement</h3>
-                  <ul className="list-disc pl-6 space-y-1">
-                    <li>Finalize stakeholder mapping</li>
-                    <li>Deploy Airtable tracker</li>
-                    <li>Launch redesigned website</li>
-                    <li>Outreach to top-priority stakeholders</li>
-                  </ul>
-                </div>
-              </div>
-              
-              {/* Phase 2 */}
-              <div className="relative pl-10 pb-10 border-l-2 border-[#19404C] ml-6">
-                <div className="absolute left-0 top-0 w-12 h-12 bg-[#fef3c7] rounded-full border-4 border-[#19404C] flex items-center justify-center -ml-6">
-                  <span className="text-[#92400e] font-bold">2</span>
-                </div>
-                <div className="bg-white rounded-lg shadow-md p-6">
-                  <div className="inline-block bg-[#fef3c7] text-[#92400e] text-sm font-semibold px-3 py-1 rounded-full mb-2">
-                    Phase 2: Months 3-4
-                  </div>
-                  <h3 className="text-xl font-semibold text-[#19404C] mb-3">Relationship Building</h3>
-                  <ul className="list-disc pl-6 space-y-1">
-                    <li>Launch media strategy content</li>
-                    <li>Initiate stakeholder sessions</li>
-                    <li>Formalize MOU templates</li>
-                  </ul>
-                </div>
-              </div>
-              
-              {/* Phase 3 */}
-              <div className="relative pl-10 pb-10 border-l-2 border-[#19404C] ml-6">
-                <div className="absolute left-0 top-0 w-12 h-12 bg-[#dcfce7] rounded-full border-4 border-[#19404C] flex items-center justify-center -ml-6">
-                  <span className="text-[#166534] font-bold">3</span>
-                </div>
-                <div className="bg-white rounded-lg shadow-md p-6">
-                  <div className="inline-block bg-[#dcfce7] text-[#166534] text-sm font-semibold px-3 py-1 rounded-full mb-2">
-                    Phase 3: Months 5-8
-                  </div>
-                  <h3 className="text-xl font-semibold text-[#19404C] mb-3">Active Collaboration</h3>
-                  <ul className="list-disc pl-6 space-y-1">
-                    <li>Formalize key partnerships with MOUs</li>
-                    <li>Conduct collaborative planning sessions</li>
-                    <li>Develop joint communications</li>
-                    <li>Implement feedback mechanisms</li>
-                  </ul>
-                </div>
-              </div>
-              
-              {/* Phase 4 */}
-              <div className="relative pl-10 border-l-2 border-[#19404C] ml-6">
-                <div className="absolute left-0 top-0 w-12 h-12 bg-[#dbeafe] rounded-full border-4 border-[#19404C] flex items-center justify-center -ml-6">
-                  <span className="text-[#1e40af] font-bold">4</span>
-                </div>
-                <div className="bg-white rounded-lg shadow-md p-6">
-                  <div className="inline-block bg-[#dbeafe] text-[#1e40af] text-sm font-semibold px-3 py-1 rounded-full mb-2">
-                    Phase 4: Months 9-12
-                  </div>
-                  <h3 className="text-xl font-semibold text-[#19404C] mb-3">Optimization & Scaling</h3>
-                  <ul className="list-disc pl-6 space-y-1">
-                    <li>Evaluate engagement effectiveness</li>
-                    <li>Scale successful approaches</li>
-                    <li>Refine communications strategy</li>
-                    <li>Develop long-term sustainability plan</li>
-                  </ul>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
 
+          {/* Airtable Embed */}
+          <div className="mt-16 mb-12">
+            <h3 className="text-2xl font-semibold text-[#19404C] mb-4">Live Implementation Framework</h3>
+            <p className="mb-6 text-gray-700 max-w-3xl">
+              The embedded Airtable workspace below enables structured execution across all modules. It includes linked records, filters by workstream, and is updated continuously.
+            </p>
+
+            <div className="w-full h-[900px] rounded-lg overflow-hidden shadow-md">
+              <iframe
+                className="w-full h-full border-0"
+                src="https://airtable.com/embed/appkb0tqaUR9npPx9/pagPeUkMb2bzOY9j8"
+                title="FPP Implementation Airtable App"
+              ></iframe>
+            </div>
+
+            <p className="mt-4 text-sm text-gray-600 italic">
+              Use the tabs, filters, or views in the embedded dashboard to explore campaign data, stakeholder logs, and media metrics in real time.
+            </p>
+          </div>
+
+          {/* Feedback Section */}
           <div className="mb-16">
-            <h3 className="text-2xl font-semibold text-[#19404C] mb-4">Implementation Milestones</h3>
-            
-            <div className="overflow-x-auto">
-              <table className="w-full border-collapse">
-                <thead>
-                  <tr className="bg-gray-50">
-                    <th className="border p-3 text-left">Timeline</th>
-                    <th className="border p-3 text-left">Key Deliverables</th>
-                    <th className="border p-3 text-left">Success Metrics</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td className="border p-3 font-medium">Month 1</td>
-                    <td className="border p-3">
-                      <ul className="list-disc pl-5">
-                        <li>Finalized stakeholder map</li>
-                        <li>Website launch</li>
-                        <li>Outreach materials created</li>
-                      </ul>
-                    </td>
-                    <td className="border p-3">
-                      <ul className="list-disc pl-5">
-                        <li>Stakeholder database complete</li>
-                        <li>Website traffic metrics established</li>
-                      </ul>
-                    </td>
-                  </tr>
-                  <tr className="bg-gray-50">
-                    <td className="border p-3 font-medium">Month 3</td>
-                    <td className="border p-3">
-                      <ul className="list-disc pl-5">
-                        <li>Initial stakeholder meetings</li>
-                        <li>Media content calendar active</li>
-                        <li>First MOU signed</li>
-                      </ul>
-                    </td>
-                    <td className="border p-3">
-                      <ul className="list-disc pl-5">
-                        <li>50% of priority stakeholders engaged</li>
-                        <li>Media engagement metrics improving</li>
-                      </ul>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="border p-3 font-medium">Month 6</td>
-                    <td className="border p-3">
-                      <ul className="list-disc pl-5">
-                        <li>Quarterly review completed</li>
-                        <li>Strategy optimization</li>
-                        <li>Content refinement</li>
-                      </ul>
-                    </td>
-                    <td className="border p-3">
-                      <ul className="list-disc pl-5">
-                        <li>80% of priority stakeholders engaged</li>
-                        <li>Multiple formal partnerships established</li>
-                      </ul>
-                    </td>
-                  </tr>
-                  <tr className="bg-gray-50">
-                    <td className="border p-3 font-medium">Month 12</td>
-                    <td className="border p-3">
-                      <ul className="list-disc pl-5">
-                        <li>Comprehensive evaluation report</li>
-                        <li>Long-term sustainability plan</li>
-                        <li>Success stories documentation</li>
-                      </ul>
-                    </td>
-                    <td className="border p-3">
-                      <ul className="list-disc pl-5">
-                        <li>100% of priority stakeholders engaged</li>
-                        <li>Positive sentiment metrics</li>
-                        <li>Strong partnership foundation</li>
-                      </ul>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          <div className="mb-12">
-            <h3 className="text-2xl font-semibold text-[#19404C] mb-4">Feedback Portal</h3>
-            <p className="mb-6">
-              Please use the embedded form below to share feedback, questions, or ideas regarding the proposal. Your input will shape refinements during the next phase of development.
+            <h3 className="text-2xl font-semibold text-[#19404C] mb-4">Feedback & Adaptation</h3>
+            <p className="mb-6 text-gray-700 max-w-3xl">
+              This framework is adaptive by design. Input from stakeholders, collaborators, and advisors informs ongoing improvements. Submit feedback using the form below to suggest improvements or report gaps.
             </p>
-            
+
             <div className="feedback-container h-[800px] w-full rounded-lg overflow-hidden shadow-md">
               <iframe 
                 className="w-full h-full border-0"
@@ -207,9 +96,9 @@ const Implementation: React.FC = () => {
                 title="Fair Price Pharma Feedback Form"
               ></iframe>
             </div>
-            
+
             <p className="text-sm text-gray-600 mt-4 italic">
-              All responses are confidential and reviewed solely by the project lead.
+              Feedback is reviewed and used to improve how the Airtable framework supports real-world needs.
             </p>
           </div>
         </div>
