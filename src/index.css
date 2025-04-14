@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #19404C;
+  --primary-light: #FFC499;
+  --primary-dark: #2A5A6C;
+  --secondary: #C3A481;
+  --accent: #CC9332;
+  --light: #F5F7FA;
+  --dark: #2A2825;
+  --text: #63757D;
+  --text-light: #8B9467;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  @apply bg-white text-gray-700;
+}
+
+/* Page Header Styles */
+.page-header {
+  @apply bg-[#19404C] text-white py-12 mb-8;
+}
+
+.page-title {
+  @apply text-4xl md:text-5xl font-bold mb-4;
+}
+
+.page-subtitle {
+  @apply text-xl max-w-3xl opacity-90;
+}
+
+/* Mindmap Styles */
+.mindmap-container {
+  @apply bg-white p-4 rounded-lg shadow-md min-h-[650px] w-full;
+}
+
+.loading-indicator {
+  @apply flex flex-col items-center justify-center h-full min-h-[300px];
+}
+
+.spinner {
+  @apply w-10 h-10 border-4 border-gray-200 border-t-[#19404C] rounded-full;
+  animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Feedback iframe */
+@media screen and (max-width: 768px) {
+  .feedback-container {
+    height: 1000px !important;
+  }
+}
+
+/* Media Strategy Cards */
+.strategy-card {
+  @apply bg-white rounded-lg shadow-md p-6;
+}
+
+.platform-card {
+  @apply bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow;
+}
+
+.month-card {
+  @apply bg-white rounded-lg shadow-md overflow-hidden;
+}
+
+.month-title {
+  @apply bg-[#19404C] text-white p-3 text-center font-semibold;
+}
+
+.month-content {
+  @apply p-4;
+}
+
+/* Stakeholder Matrix Styles */
+.approach-card {
+  @apply bg-white rounded-lg shadow-md p-6 transition-all hover:-translate-y-1 hover:shadow-lg;
+}
+
+.high-influence {
+  @apply text-red-500 font-semibold;
+}
+
+.medium-influence {
+  @apply text-amber-500 font-semibold;
+}
+
+.low-influence {
+  @apply text-green-500 font-semibold;
+}
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
