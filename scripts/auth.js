@@ -1,7 +1,7 @@
 // Simple authentication check
 (function() {
-  // Don't check authentication on the login page itself
-  if (window.location.pathname.endsWith('login.html')) {
+  // Don't check authentication on the index page itself
+  if (window.location.pathname.endsWith('index.html') || window.location.pathname === '/') {
     return;
   }
   
@@ -10,6 +10,6 @@
   
   // If not authenticated, redirect to login page
   if (!isAuthenticated) {
-    window.location.href = 'login.html';
+    window.location.href = 'index.html';
   }
 })();

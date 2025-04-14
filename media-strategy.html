@@ -4,250 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fair Price Pharma - Media Strategy</title>
-  <link href="styles/tailwind.css" rel="stylesheet">
+  <link href="styles/main.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <style>
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-      color: #334155;
-      line-height: 1.6;
-      background-color: #f8fafc;
-      margin: 0;
-      padding: 0;
-    }
-    
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 1rem 2rem;
-    }
-    
-    .header {
-      background-color: white;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    
-    .nav-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    
-    .logo {
-      font-weight: 700;
-      font-size: 1.25rem;
-      color: #2563eb;
-    }
-    
-    .navigation {
-      display: flex;
-      gap: 2rem;
-    }
-    
-    .nav-link {
-      color: #64748b;
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s ease;
-      padding: 0.5rem 0;
-      border-bottom: 2px solid transparent;
-    }
-    
-    .nav-link:hover, .nav-link.active {
-      color: #2563eb;
-      border-bottom: 2px solid #2563eb;
-    }
-    
-    .page-header {
-      background-color: #1e293b;
-      color: white;
-      padding: 3rem 0;
-    }
-    
-    .page-title {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      font-weight: 700;
-    }
-    
-    .page-subtitle {
-      font-size: 1.25rem;
-      max-width: 800px;
-      opacity: 0.8;
-    }
-    
-    .section {
-      padding: 4rem 0;
-    }
-    
-    .content-section {
-      background-color: white;
-      border-radius: 0.5rem;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-      padding: 2rem;
-      margin-bottom: 2rem;
-    }
-    
-    .content-section h3 {
-      color: #2563eb;
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      font-weight: 600;
-    }
-    
-    .chart-container {
-      position: relative;
-      max-width: 500px;
-      margin: 2rem auto;
-    }
-    
-    .chart-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-      gap: 2rem;
-      margin: 2rem 0;
-    }
-    
-    .strategy-card {
-      background-color: #f8fafc;
-      border-radius: 0.5rem;
-      padding: 1.5rem;
-      margin-bottom: 1rem;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-      border-left: 4px solid #2563eb;
-    }
-    
-    .strategy-card h4 {
-      color: #1e293b;
-      font-weight: 600;
-      margin-top: 0;
-      margin-bottom: 0.75rem;
-    }
-    
-    .platform-card {
-      background-color: #f8fafc;
-      border-radius: 0.5rem;
-      padding: 1.5rem;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
-    }
-    
-    .platform-card:hover {
-      transform: translateY(-5px);
-    }
-    
-    .platform-icon {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-    
-    .platform-title {
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: #1e293b;
-      margin-bottom: 0.5rem;
-    }
-    
-    .footer {
-      background-color: #1e293b;
-      color: #94a3b8;
-      padding: 2rem 0;
-      text-align: center;
-    }
-    
-    .back-link {
-      display: inline-flex;
-      align-items: center;
-      color: #2563eb;
-      text-decoration: none;
-      margin-bottom: 2rem;
-      font-weight: 500;
-    }
-    
-    .back-link svg {
-      margin-right: 0.5rem;
-    }
-    
-    .back-link:hover {
-      text-decoration: underline;
-    }
-    
-    .next-section {
-      text-align: right;
-      margin-top: 2rem;
-    }
-    
-    .next-link {
-      display: inline-flex;
-      align-items: center;
-      color: #2563eb;
-      text-decoration: none;
-      font-weight: 600;
-      transition: all 0.3s ease;
-    }
-    
-    .next-link:hover {
-      transform: translateX(5px);
-    }
-    
-    .next-link i {
-      margin-left: 0.5rem;
-    }
-    
-    .calendar-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0.5rem;
-      margin: 2rem 0;
-    }
-    
-    .month-card {
-      background-color: #f8fafc;
-      border-radius: 0.5rem;
-      padding: 1rem;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    }
-    
-    .month-title {
-      font-weight: 600;
-      color: #1e293b;
-      margin-bottom: 0.5rem;
-      text-align: center;
-      padding-bottom: 0.5rem;
-      border-bottom: 1px solid #e2e8f0;
-    }
-    
-    .month-content {
-      font-size: 0.9rem;
-    }
-    
-    @media screen and (max-width: 768px) {
-      .nav-container {
-        flex-direction: column;
-        gap: 1rem;
-        padding: 1rem 0;
-      }
-      
-      .navigation {
-        width: 100%;
-        justify-content: space-between;
-        overflow-x: auto;
-        gap: 1rem;
-      }
-      
-      .chart-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .calendar-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-  </style>
 </head>
 <body>
   <!-- Header & Navigation -->
@@ -255,24 +14,21 @@
     <div class="container nav-container">
       <div class="logo">Fair Price Pharma Proposal</div>
       <nav class="navigation">
-        <a href="index.html" class="nav-link">Executive Summary</a>
+        <a href="executive-summary.html" class="nav-link">Executive Summary</a>
         <a href="context.html" class="nav-link">Background</a>
-        <a href="stakeholder-map.html" class="nav-link">Stakeholder Map</a>
         <a href="stakeholders.html" class="nav-link">Stakeholder Matrix</a>
         <a href="media-strategy.html" class="nav-link active">Media Strategy</a>
-        <a href="website.html" class="nav-link">Website Redesign</a>
+        <a href="website-redesign.html" class="nav-link">Website Redesign</a>
         <a href="implementation.html" class="nav-link">Implementation</a>
       </nav>
     </div>
   </header>
   
   <!-- Back to homepage link -->
-  <div class="container" style="padding-top: 2rem;">
-    <a href="/" class="back-link">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M19 12H5M12 19l-7-7 7-7"/>
-      </svg>
-      Back to Dr. Jamie Forrest's Homepage
+  <div class="container" style="padding-top: 5rem;">
+    <a href="executive-summary.html" class="back-link">
+      <i class="fas fa-arrow-left"></i>
+      Back to Executive Summary
     </a>
   </div>
   
@@ -503,7 +259,7 @@
       </div>
       
       <div class="next-section">
-        <a href="website.html" class="next-link">
+        <a href="website-redesign.html" class="next-link">
           Continue to Website Redesign
           <i class="fas fa-arrow-right"></i>
         </a>
